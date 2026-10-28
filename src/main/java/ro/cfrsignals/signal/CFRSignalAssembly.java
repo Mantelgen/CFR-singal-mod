@@ -5,8 +5,11 @@ import net.minecraft.core.Direction;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.state.BlockState;
 import ro.cfrsignals.block.CFRSignalBaseBlock;
+import ro.cfrsignals.block.CFRSignalBlock;
 import ro.cfrsignals.block.CFRSignalBridgeBeamBlock;
 import ro.cfrsignals.block.CFRSignalPoleBlock;
+import ro.cfrsignals.blockentity.CFRSignalBlockEntity;
+import ro.cfrsignals.config.SignalMount;
 import ro.cfrsignals.registry.CFRBlocks;
 
 /** Validates the physical base/pole/head column beneath a signal head. */
@@ -51,6 +54,75 @@ public final class CFRSignalAssembly {
     public static Result inspectBridge(BlockGetter level, BlockPos headPosition, Direction headFacing) {
         BlockPos beamPosition = headPosition.above();
         return inspectBridgeFromBeam(level, beamPosition, headFacing);
+    }
+
+    /** Validates a head that replaces one mast segment while the pole continues above it. */
+    public static Result inspectInlinePole(
+            BlockGetter level,
+            BlockPos headPosition,
+            Direction headFacing
+    ) {
+        BlockState upperPole = level.getBlockState(headPosition.above());
+        if (!upperPole.is(CFRBlocks.SIGNAL_POLE.get())) {
+            return new Result(Status.NO_UPPER_POLE, 0);
+        }
+        if (upperPole.getValue(CFRSignalPoleBlock.FACING) != headFacing) {
+            return new Result(Status.MISALIGNED, 0);
+        }
+
+        BlockPos.MutableBlockPos cursor = headPosition.below().mutable();
+        int supportSegments = 0;
+        int physicalPoles = 0;
+        while (true) {
+            BlockState state = level.getBlockState(cursor);
+            if (state.is(CFRBlocks.SIGNAL_POLE.get())) {
+                if (state.getValue(CFRSignalPoleBlock.FACING) != headFacing) {
+                    return new Result(Status.MISALIGNED, physicalPoles);
+                }
+                physicalPoles++;
+            } else if (isInlineHead(level, cursor)) {
+                if (state.getValue(CFRSignalBlock.FACING) != headFacing) {
+                    return new Result(Status.MISALIGNED, physicalPoles);
+                }
+            } else {
+                break;
+            }
+            supportSegments++;
+            if (supportSegments > MAX_POLES) {
+                return new Result(Status.TOO_TALL, physicalPoles);
+            }
+            cursor.move(Direction.DOWN);
+        }
+
+        if (physicalPoles < MIN_POLES) {
+            return new Result(Status.NO_POLE, physicalPoles);
+        }
+        BlockState base = level.getBlockState(cursor);
+        if (!base.is(CFRBlocks.SIGNAL_BASE.get())) {
+            return new Result(Status.NO_BASE, physicalPoles);
+        }
+        if (base.getValue(CFRSignalBaseBlock.FACING) != headFacing) {
+            return new Result(Status.MISALIGNED, physicalPoles);
+        }
+        return new Result(Status.COMPLETE, physicalPoles);
+    }
+
+    public static boolean isInlineHead(BlockGetter level, BlockPos position) {
+        BlockState state = level.getBlockState(position);
+        if (!state.is(CFRBlocks.SIGNAL_CONTROLLER.get())) {
+            return false;
+        }
+        return level.getBlockEntity(position) instanceof CFRSignalBlockEntity signal
+                && signal.getConfiguration().mount() == SignalMount.POLE_INLINE;
+    }
+
+    /** Chooses the alternating color for the mast segment rendered through an inline head. */
+    public static boolean inlineSegmentIsWhite(BlockGetter level, BlockPos headPosition) {
+        BlockState below = level.getBlockState(headPosition.below());
+        if (below.is(CFRBlocks.SIGNAL_POLE.get())) {
+            return !below.getValue(CFRSignalPoleBlock.WHITE);
+        }
+        return below.is(CFRBlocks.SIGNAL_BASE.get());
     }
 
     /** Mechanical bridge signals stand above the crossbeam instead of hanging below it. */
@@ -119,6 +191,7 @@ public final class CFRSignalAssembly {
         NO_POLE,
         NO_BASE,
         NO_WALL,
+        NO_UPPER_POLE,
         NO_BRIDGE,
         NO_BRIDGE_SUPPORT,
         MISALIGNED,

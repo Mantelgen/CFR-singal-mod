@@ -9,11 +9,13 @@ public final class SignalOptionCompatibility {
     private static final List<SignalMount> PHYSICAL_ASSEMBLY_MOUNT = List.of(SignalMount.MAST);
     private static final List<SignalMount> ELECTRIC_MOUNTS = List.of(
             SignalMount.MAST,
+            SignalMount.POLE_INLINE,
             SignalMount.CANTILEVER,
             SignalMount.WALL
     );
-    private static final List<SignalMount> BRIDGE_MOUNTS = List.of(
+    private static final List<SignalMount> ELEVATED_MOUNTS = List.of(
             SignalMount.MAST,
+            SignalMount.POLE_INLINE,
             SignalMount.CANTILEVER
     );
     private static final List<SignalFinish> ALL_FINISHES = List.of(SignalFinish.values());
@@ -31,7 +33,7 @@ public final class SignalOptionCompatibility {
     public static List<SignalMount> allowedMounts(SignalFamily family) {
         return switch (safeFamily(family)) {
             case TWO_LIGHT, THREE_LIGHT, SHUNTING, REPEATER, TMV -> ELECTRIC_MOUNTS;
-            case EMERGENCY, MECHANICAL_SEMAPHORE -> BRIDGE_MOUNTS;
+            case EMERGENCY, MECHANICAL_SEMAPHORE -> ELEVATED_MOUNTS;
             case LEGACY_DWARF_ENTRY -> PHYSICAL_ASSEMBLY_MOUNT;
         };
     }

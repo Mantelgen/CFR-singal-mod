@@ -6,7 +6,7 @@ The project is currently at Milestone 13: the shared CFR signal controller suppo
 
 Milestone 14 adds validated data-driven visual definitions under `data/<namespace>/cfr_signal_definitions`. These describe families, model identifiers, lamp arrangements, supported attachments, and defaults while leaving Create railway behavior and server authority in Java. See `docs/signal-definitions.md` for the schema and fallback behavior.
 
-Milestone 15 adds initial survival recipes for the existing complete signal controller and CFR signal wrench. Recipe details are documented in `docs/survival-recipes.md`.
+Milestone 15 adds initial survival recipes for the signal components. Signal configuration now uses Create's native wrench; the former CFR wrench remains registered only to preserve old-world inventories. Recipe details are documented in `docs/survival-recipes.md`.
 
 Milestone 16 verified the bundled Ponder 1.0.82 API. Scene registration is intentionally deferred until CFR structure templates can be authored after the remaining visual passes; the exact API findings and required templates are recorded in `docs/ponder-integration.md`.
 
@@ -38,7 +38,7 @@ Milestone 28 completes a focused visual-performance pass. Static parts remain ba
 
 Milestone 29 adds repeatable final visual-integrity tests for every CFR block model and texture. The suite rejects missing texture references, undecodable or non-power-of-two textures, fallback-magenta pixels, invalid model bounds, zero-size elements, directional cull faces, semaphore arm gaps, and detached or z-fighting identification plate placement. The remaining camera-angle and weather matrix is documented in `docs/final-visual-validation.md` for manual in-game confirmation.
 
-Optional Milestone 30 adds final player-facing polish: localized controller/wrench guidance and complete Romanian (`ro_ro`) language coverage with automated English-key parity. Existing local semaphore clunks and safe centered modern defaults are retained; unstable Ponder scenes and placeholder custom sounds are deliberately not added.
+Optional Milestone 30 adds final player-facing polish: localized controller/Create-wrench guidance and complete Romanian (`ro_ro`) language coverage with automated English-key parity. Existing local semaphore clunks and safe centered modern defaults are retained; unstable Ponder scenes and placeholder custom sounds are deliberately not added.
 
 The physical-assembly revamp replaces the projected one-block structure with
 three real block types. Build upward as `Signal Base -> one or more Signal Pole
@@ -55,10 +55,22 @@ Signal bridges use the same physical system. Put a bridge-beam block on top of
 an aligned pole, then continue the beam sideways. Extend it on one side for an
 L-shaped cantilever or on both sides for a T-shaped bridge. Place luminous
 signal heads directly below a beam segment and mechanical semaphores directly
-above one, then select **Signal bridge / cantilever** with the wrench. Mechanical
+above one, then select **Signal bridge / cantilever** with Create's wrench. Mechanical
 semaphores use a pedestal so the mechanism and moving arm remain above the
 crossbeam. A head accepts a supporting pole and base up to eight connected
 beam segments away, and every head keeps its own Create track link.
+
+For an inline head partway up a mast, build to the desired height, place the
+signal head directly on top of the pole, and select **Inline continuous pole**
+with Create's wrench. Then continue placing pole blocks directly above the head. The
+head renders the missing mast-and-ladder section behind its housing, creating an
+unbroken column. More inline heads can be inserted higher on the same mast, and
+each remains an independent Create-linked signal. The complete column must stay
+aligned and terminate at a CFR signal base below.
+
+Inline mechanical semaphores project their complete mechanism forward from the
+continuous pole. Only the housing's rear mounting edge overlaps the mast, so the
+pole remains visually continuous without passing through the mechanism.
 
 ## Development requirements
 

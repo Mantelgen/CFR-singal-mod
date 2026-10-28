@@ -6,14 +6,15 @@ public enum SignalMount {
     MAST,
     DWARF,
     CANTILEVER,
-    WALL;
+    WALL,
+    POLE_INLINE;
 
     public String getSerializedName() {
         return name().toLowerCase(Locale.ROOT);
     }
 
     public boolean hasElevatedSupport() {
-        return this == MAST || this == CANTILEVER;
+        return this == MAST || this == CANTILEVER || this == POLE_INLINE;
     }
 
     public boolean suspendsHead() {
@@ -25,6 +26,10 @@ public enum SignalMount {
         // as single-head cantilevers.
         if ("gantry".equals(name)) {
             return CANTILEVER;
+        }
+        // Short-lived development builds called this option pole_side.
+        if ("pole_side".equals(name)) {
+            return POLE_INLINE;
         }
         if (name != null) {
             for (SignalMount mount : values()) {

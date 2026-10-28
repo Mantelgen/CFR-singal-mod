@@ -18,7 +18,7 @@ The client resource reload must also complete without CFR missing-model or missi
 
 ## Manual configuration matrix
 
-Create these assemblies with the CFR wrench:
+Create these assemblies with Create's wrench:
 
 | Family | State | Alignment | Plate text |
 |---|---|---|---|

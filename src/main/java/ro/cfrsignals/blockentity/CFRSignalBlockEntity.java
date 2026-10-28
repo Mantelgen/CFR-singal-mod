@@ -103,6 +103,13 @@ public class CFRSignalBlockEntity extends SmartBlockEntity {
                     ? CFRSignalAssembly.inspectMechanicalBridge(level, worldPosition, facing)
                     : CFRSignalAssembly.inspectBridge(level, worldPosition, facing);
         }
+        if (configuration.mount() == SignalMount.POLE_INLINE) {
+            return CFRSignalAssembly.inspectInlinePole(
+                    level,
+                    worldPosition,
+                    getBlockState().getValue(CFRSignalBlock.FACING)
+            );
+        }
         return CFRSignalAssembly.inspect(
                 level,
                 worldPosition,

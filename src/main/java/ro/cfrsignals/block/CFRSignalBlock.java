@@ -225,7 +225,7 @@ public class CFRSignalBlock extends Block implements IBE<CFRSignalBlockEntity> {
             InteractionHand hand,
             BlockHitResult hitResult
     ) {
-        if (stack.is(CFRItems.SIGNAL_WRENCH.get())) {
+        if (CFRItems.isSignalConfigurationTool(stack)) {
             if (player instanceof ServerPlayer serverPlayer) {
                 onBlockEntityUse(level, pos, blockEntity -> {
                     CFRNetwork.openConfiguration(serverPlayer, blockEntity);

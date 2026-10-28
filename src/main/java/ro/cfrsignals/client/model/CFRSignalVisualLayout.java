@@ -10,6 +10,9 @@ public final class CFRSignalVisualLayout {
     private static final double SIDE_HEAD_OFFSET_X = 3.5D / 16.0D;
     // Pull the housing in front of the mast; only its rear mounting spine intersects the pole.
     private static final double HEAD_FORWARD_OFFSET_Z = -3.5D / 16.0D;
+    // Inline semaphore housings are much deeper than electric heads. Move the complete
+    // mechanism six model units forward, leaving only its rear edge on the pole.
+    private static final double MECHANICAL_INLINE_FORWARD_OFFSET_Z = -6.0D / 16.0D;
     private static final double DWARF_HEAD_OFFSET_Y = 0.29D;
     private static final float MODERN_HEAD_SCALE = 1.0F;
     private static final float MECHANICAL_SEMAPHORE_SCALE = 1.15F;
@@ -34,6 +37,10 @@ public final class CFRSignalVisualLayout {
 
     public static double headForwardOffsetZ() {
         return HEAD_FORWARD_OFFSET_Z;
+    }
+
+    public static double mechanicalInlineForwardOffsetZ() {
+        return MECHANICAL_INLINE_FORWARD_OFFSET_Z;
     }
 
     public static double dwarfHeadOffsetY() {
@@ -99,13 +106,17 @@ public final class CFRSignalVisualLayout {
     ) {
         double normalOffset = switch (mount) {
             case WALL -> -0.35D;
-            case CANTILEVER -> -0.25D;
+            case CANTILEVER, POLE_INLINE -> -0.25D;
             default -> -0.55D;
         };
         double positionOffset = switch (position) {
-            case HIGH -> mount == SignalMount.CANTILEVER ? 0.10D : 0.30D;
+            case HIGH -> mount == SignalMount.CANTILEVER || mount == SignalMount.POLE_INLINE
+                    ? 0.10D
+                    : 0.30D;
             case NORMAL -> 0.0D;
-            case LOW -> mount == SignalMount.CANTILEVER ? -0.10D : -0.30D;
+            case LOW -> mount == SignalMount.CANTILEVER || mount == SignalMount.POLE_INLINE
+                    ? -0.10D
+                    : -0.30D;
         };
         return normalOffset + positionOffset;
     }

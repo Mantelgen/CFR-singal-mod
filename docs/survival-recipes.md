@@ -1,8 +1,8 @@
 # Survival recipes
 
 Minecraft 1.21.1 loads recipes from the singular `data/<namespace>/recipe`
-directory. CFR Signals registers separate base, pole, signal-head, and wrench
-items so survival construction matches the in-world modular assembly.
+directory. CFR Signals registers separate base, pole, and signal-head items so
+survival construction matches the in-world modular assembly.
 
 ## Signal base
 
@@ -29,10 +29,11 @@ connector, extend one side for an L-shaped cantilever or both sides for a
 T-shaped bridge. Put luminous heads directly below the beam and mechanical
 semaphores directly above it.
 
-## CFR signal wrench
+## Configuration wrench
 
-The shaped tool recipe uses three iron sheets, one Create andesite alloy, and
-one wooden rod. It yields one non-stackable CFR signal wrench.
+Use Create's native wrench on a placed CFR signal head to open its configuration.
+There is no separate CFR wrench recipe. The former CFR wrench stays registered
+but hidden only so upgrading an existing world does not delete old inventory stacks.
 
 These are initial survival costs and can be rebalanced later without changing
 the registered items or saved signal data.

@@ -105,6 +105,26 @@ final class ApplySignalConfigurationPayloadTest {
     }
 
     @Test
+    void acceptsSignalMountedInlineOnAContinuousPole() {
+        var payload = new ApplySignalConfigurationPayload(
+                BlockPos.ZERO,
+                SignalFamily.THREE_LIGHT,
+                true,
+                true,
+                true,
+                "P2",
+                SignalHeadAlignment.CENTER,
+                IdentificationPlatePosition.NORMAL,
+                SignalMount.POLE_INLINE,
+                SignalFinish.MODERN_GRAY,
+                AuxiliaryIndicator.NONE,
+                1
+        );
+
+        assertTrue(payload.hasValidValues());
+    }
+
+    @Test
     void rejectsFamilyIncompatibleOptions() {
         var payload = new ApplySignalConfigurationPayload(
                 BlockPos.ZERO,

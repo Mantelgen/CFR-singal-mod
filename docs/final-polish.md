@@ -4,11 +4,11 @@ Optional Milestone 30 improves the player-facing parts of the existing workflow 
 
 ## Items and creative tab
 
-The CFR Signal Controller tooltip explains that the block is placed beside railway track, targets a Create signal edge, and is visually configured with the CFR Signal Wrench. The wrench tooltip explains the settings it edits. Both tooltip implementations use common Minecraft classes only and remain safe on dedicated servers.
+The CFR Signal Controller tooltip explains that the block is placed beside railway track, targets a Create signal edge, and is visually configured with Create's native wrench.
 
-The CFR Signals creative tab now exposes the controller followed by the wrench. The internal test block remains registered for development-world compatibility but is no longer shown to normal players in the tab.
+The CFR Signals creative tab exposes the physical signal components and controller. The internal test block and legacy CFR wrench remain registered for development/old-world compatibility but are not shown to normal players in the tab.
 
-The controller keeps its recognizable concrete-base inventory model. The wrench keeps Create's familiar handheld wrench sprite so its interaction role is immediately recognizable; the CFR-specific name and tooltip distinguish it from Create's own wrench.
+Create's actual wrench now opens the editor and is rechecked by the server when configuration is applied. This uses Create's own item model and hand transforms instead of duplicating them on a custom item.
 
 ## Localization
 

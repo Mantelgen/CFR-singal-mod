@@ -1,10 +1,10 @@
 # Signal configuration and networking
 
-Milestone 11 adds a dedicated CFR Signal Wrench and a client configuration screen without introducing a container menu or continuous synchronization.
+The client configuration screen uses Create's native wrench without introducing a container menu or continuous synchronization. The former CFR wrench is retained only as an old-world compatibility item.
 
 ## Interaction flow
 
-1. The player uses the wrench on a CFR signal controller.
+1. The player uses Create's wrench on a CFR signal controller.
 2. The logical server reads the authoritative block-entity configuration and sends one `OpenSignalConfigurationPayload` to that player.
 3. The client edits a local snapshot. Changing controls does not send packets.
 4. Apply sends one `ApplySignalConfigurationPayload` to the server.
@@ -17,7 +17,7 @@ The editable settings are the signal family, left/center/right head alignment, l
 The server accepts an update only when:
 
 - the sender is a server player with build permission;
-- the player is still holding the CFR Signal Wrench;
+- the player is still holding Create's wrench;
 - the controller is in a loaded chunk and within eight blocks;
 - the target block entity is a CFR signal controller;
 - the family and head-alignment identifiers are valid;

@@ -11,6 +11,7 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import ro.cfrsignals.registry.CFRBlocks;
+import ro.cfrsignals.signal.CFRSignalAssembly;
 
 /** A stackable mast section. Each section includes its ladder in the block model. */
 public final class CFRSignalPoleBlock extends Block {
@@ -36,6 +37,11 @@ public final class CFRSignalPoleBlock extends Block {
             facing = below.getValue(CFRSignalBaseBlock.FACING);
             // The base contains the first red mast section, so the next section is white.
             white = true;
+        } else if (below.is(CFRBlocks.SIGNAL_CONTROLLER.get())) {
+            facing = below.getValue(CFRSignalBlock.FACING);
+            white = !CFRSignalAssembly.inlineSegmentIsWhite(
+                    context.getLevel(), context.getClickedPos().below()
+            );
         }
         return defaultBlockState().setValue(FACING, facing).setValue(WHITE, white);
     }

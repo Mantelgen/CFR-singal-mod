@@ -48,8 +48,8 @@ public final class CFRNetwork {
                 || !payload.hasValidValues()
                 || !serverPlayer.mayBuild()
                 || !serverPlayer.level().mayInteract(serverPlayer, payload.position())
-                || (!serverPlayer.getMainHandItem().is(CFRItems.SIGNAL_WRENCH.get())
-                && !serverPlayer.getOffhandItem().is(CFRItems.SIGNAL_WRENCH.get()))
+                || (!CFRItems.isSignalConfigurationTool(serverPlayer.getMainHandItem())
+                && !CFRItems.isSignalConfigurationTool(serverPlayer.getOffhandItem()))
                 || serverPlayer.distanceToSqr(
                         payload.position().getX() + 0.5D,
                         payload.position().getY() + 0.5D,

@@ -324,9 +324,25 @@ final class VisualAssetIntegrityTest {
     }
 
     @Test
-    void signalWrenchUsesTheCompleteCreateWrenchModel() throws IOException {
+    void legacySignalWrenchInheritsCreateWrenchModel() throws IOException {
         JsonObject wrench = readJson(ASSET_ROOT.resolve("models/item/signal_wrench.json"));
-        assertEquals("create:item/wrench/gear", wrench.get("parent").getAsString());
+        assertEquals("create:item/wrench", wrench.get("parent").getAsString());
+    }
+
+    @Test
+    void inlineSemaphoreProjectsForwardButStillTouchesPole() throws IOException {
+        JsonObject housing = readJson(MODEL_ROOT.resolve("mechanical/semaphore_mechanism_housing.json"));
+        JsonObject mast = readJson(MODEL_ROOT.resolve("mast/segment.json"));
+
+        double offset = CFRSignalVisualLayout.mechanicalInlineForwardOffsetZ() * 16.0D;
+        double projectedHousingRear = maximumCoordinate(housing, "to", 2) + offset;
+        double mastFront = minimumCoordinate(mast, "from", 2);
+        double mastRear = maximumCoordinate(mast, "to", 2);
+
+        assertTrue(minimumCoordinate(housing, "from", 2) + offset < mastFront,
+                "The semaphore housing must project in front of the inline pole");
+        assertTrue(projectedHousingRear >= mastFront && projectedHousingRear <= mastRear,
+                "The housing rear edge must remain attached to the inline pole");
     }
 
     @Test

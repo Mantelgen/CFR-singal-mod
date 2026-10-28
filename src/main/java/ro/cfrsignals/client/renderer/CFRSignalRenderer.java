@@ -33,6 +33,7 @@ import ro.cfrsignals.config.SignalFinish;
 import ro.cfrsignals.config.SignalHeadAlignment;
 import ro.cfrsignals.config.SignalMount;
 import ro.cfrsignals.signal.CFRSignalAspect;
+import ro.cfrsignals.signal.CFRSignalAssembly;
 import ro.cfrsignals.signal.CFRSemaphoreAnimation;
 
 public final class CFRSignalRenderer implements BlockEntityRenderer<CFRSignalBlockEntity> {
@@ -85,6 +86,10 @@ public final class CFRSignalRenderer implements BlockEntityRenderer<CFRSignalBlo
                     packedLight,
                     packedOverlay
             );
+        } else if (configuration.mount() == SignalMount.POLE_INLINE) {
+            renderInlinePoleSegment(
+                    configuration, blockEntity, poseStack, buffer, packedLight, packedOverlay
+            );
         } else {
             // Match the original mast connection: the head overlaps the top pole by half a block.
             poseStack.translate(0.0D, -0.5D, 0.0D);
@@ -115,6 +120,13 @@ public final class CFRSignalRenderer implements BlockEntityRenderer<CFRSignalBlo
         poseStack.pushPose();
         poseStack.translate(headX, headY, 0.0D);
         if (configuration.family() == SignalFamily.MECHANICAL_SEMAPHORE) {
+            if (configuration.mount() == SignalMount.POLE_INLINE) {
+                poseStack.translate(
+                        0.0D,
+                        0.0D,
+                        CFRSignalVisualLayout.mechanicalInlineForwardOffsetZ()
+                );
+            }
             renderSemaphore(
                     blockEntity,
                     configuration,
@@ -128,9 +140,17 @@ public final class CFRSignalRenderer implements BlockEntityRenderer<CFRSignalBlo
             return;
         }
 
-        if (configuration.mount() == SignalMount.MAST) {
+        if (configuration.mount() == SignalMount.MAST
+                || configuration.mount() == SignalMount.POLE_INLINE) {
             renderHeadMountingBracket(
-                    configuration.headAlignment(), blockEntity, poseStack, buffer, packedLight, packedOverlay
+                    configuration.mount() == SignalMount.POLE_INLINE
+                            ? SignalHeadAlignment.CENTER
+                            : configuration.headAlignment(),
+                    blockEntity,
+                    poseStack,
+                    buffer,
+                    packedLight,
+                    packedOverlay
             );
         }
         poseStack.translate(
@@ -202,6 +222,9 @@ public final class CFRSignalRenderer implements BlockEntityRenderer<CFRSignalBlo
                         blockEntity, poseStack, buffer, packedLight, packedOverlay
                 );
             }
+            case POLE_INLINE -> renderInlinePoleSegment(
+                    configuration, blockEntity, poseStack, buffer, packedLight, packedOverlay
+            );
             case WALL -> renderModel(
                     CFRSignalModels.WALL_BRACKET,
                     blockEntity,
@@ -240,6 +263,41 @@ public final class CFRSignalRenderer implements BlockEntityRenderer<CFRSignalBlo
             renderModel(model, blockEntity, poseStack, buffer, packedLight, packedOverlay);
             poseStack.popPose();
         }
+    }
+
+    private void renderInlinePoleSegment(
+            CFRSignalConfiguration configuration,
+            CFRSignalBlockEntity blockEntity,
+            PoseStack poseStack,
+            MultiBufferSource buffer,
+            int packedLight,
+            int packedOverlay
+    ) {
+        boolean white = blockEntity.getLevel() != null
+                && CFRSignalAssembly.inlineSegmentIsWhite(
+                        blockEntity.getLevel(), blockEntity.getBlockPos()
+                );
+        ModelResourceLocation mastModel;
+        if (configuration.finish() == SignalFinish.MODERN_GRAY) {
+            mastModel = CFRSignalModels.MODERN_GRAY_MAST;
+        } else if (configuration.family() == SignalFamily.MECHANICAL_SEMAPHORE) {
+            mastModel = white
+                    ? CFRSignalModels.MECHANICAL_MAST_WHITE
+                    : CFRSignalModels.MECHANICAL_MAST_RED;
+        } else {
+            mastModel = white ? CFRSignalModels.MAST_WHITE : CFRSignalModels.MAST_RED;
+        }
+        renderModel(mastModel, blockEntity, poseStack, buffer, packedLight, packedOverlay);
+        renderModel(
+                configuration.family() == SignalFamily.MECHANICAL_SEMAPHORE
+                        ? CFRSignalModels.MECHANICAL_LADDER_SEGMENT
+                        : CFRSignalModels.LADDER_SEGMENT,
+                blockEntity,
+                poseStack,
+                buffer,
+                packedLight,
+                packedOverlay
+        );
     }
 
     private void renderBeam(
@@ -307,7 +365,7 @@ public final class CFRSignalRenderer implements BlockEntityRenderer<CFRSignalBlo
             double plateY = switch (configuration.mount()) {
                 case DWARF -> 0.05D;
                 case WALL -> -0.35D;
-                case MAST, CANTILEVER -> CFRSignalVisualLayout.identificationPlateOffsetY(
+                case MAST, CANTILEVER, POLE_INLINE -> CFRSignalVisualLayout.identificationPlateOffsetY(
                         configuration.family(), mastHeight, configuration.identificationPlatePosition()
                 );
             };
@@ -378,7 +436,7 @@ public final class CFRSignalRenderer implements BlockEntityRenderer<CFRSignalBlo
         poseStack.translate(0.5D, 0.0D, 0.5D);
         float plateScale = switch (configuration.mount()) {
             case WALL -> 0.85F;
-            case CANTILEVER -> CFRSignalVisualLayout.bridgeIdentificationPlateScale();
+            case CANTILEVER, POLE_INLINE -> CFRSignalVisualLayout.bridgeIdentificationPlateScale();
             default -> CFRSignalVisualLayout.identificationPlateScale();
         };
         poseStack.scale(plateScale, plateScale, plateScale);
@@ -585,6 +643,7 @@ public final class CFRSignalRenderer implements BlockEntityRenderer<CFRSignalBlo
             int packedOverlay
     ) {
         float armAngle = blockEntity.getClientSemaphoreArmAngle(partialTick);
+        SignalHeadAlignment semaphoreAlignment = configuration.headAlignment();
 
         poseStack.pushPose();
         poseStack.translate(0.5D, 0.75D, 0.5D);
@@ -602,7 +661,7 @@ public final class CFRSignalRenderer implements BlockEntityRenderer<CFRSignalBlo
         );
         renderSemaphoreLamps(
                 blockEntity,
-                configuration,
+                semaphoreAlignment,
                 poseStack,
                 buffer,
                 packedLight,
@@ -611,7 +670,7 @@ public final class CFRSignalRenderer implements BlockEntityRenderer<CFRSignalBlo
 
         poseStack.pushPose();
         poseStack.translate(0.5D, 0.75D, 0.5D);
-        applySemaphoreMounting(poseStack, configuration.headAlignment());
+        applySemaphoreMounting(poseStack, semaphoreAlignment);
         poseStack.translate(-0.5D, -0.75D, -0.5D);
         poseStack.translate(0.4375D, 0.71875D, 0.546875D);
         poseStack.mulPose(Axis.ZP.rotationDegrees(CFRSemaphoreAnimation.linkageAngle(armAngle)));
@@ -628,7 +687,7 @@ public final class CFRSignalRenderer implements BlockEntityRenderer<CFRSignalBlo
 
         poseStack.pushPose();
         poseStack.translate(0.5D, 0.75D, 0.5D);
-        applySemaphoreMounting(poseStack, configuration.headAlignment());
+        applySemaphoreMounting(poseStack, semaphoreAlignment);
         poseStack.mulPose(Axis.ZP.rotationDegrees(armAngle));
         poseStack.translate(-0.5D, -0.75D, -0.5D);
         renderModel(
@@ -681,7 +740,7 @@ public final class CFRSignalRenderer implements BlockEntityRenderer<CFRSignalBlo
 
     private void renderSemaphoreLamps(
             CFRSignalBlockEntity blockEntity,
-            CFRSignalConfiguration configuration,
+            SignalHeadAlignment semaphoreAlignment,
             PoseStack poseStack,
             MultiBufferSource buffer,
             int packedLight,
@@ -689,7 +748,7 @@ public final class CFRSignalRenderer implements BlockEntityRenderer<CFRSignalBlo
     ) {
         poseStack.pushPose();
         poseStack.translate(0.5D, 0.75D, 0.5D);
-        applySemaphoreMounting(poseStack, configuration.headAlignment());
+        applySemaphoreMounting(poseStack, semaphoreAlignment);
         poseStack.translate(-0.5D, -0.75D, -0.5D);
         poseStack.translate(0.18D, -0.05D, 0.0D);
         poseStack.translate(0.5D, 0.0D, 0.5D);

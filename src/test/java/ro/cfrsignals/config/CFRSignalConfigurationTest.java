@@ -157,6 +157,38 @@ final class CFRSignalConfigurationTest {
     }
 
     @Test
+    void continuousPoleInlineMountRoundTripsAsAnElevatedSupport() {
+        CFRSignalConfiguration configuration = CFRSignalConfiguration.defaults().withEditorSettings(
+                SignalFamily.THREE_LIGHT,
+                true,
+                true,
+                true,
+                "P-2",
+                SignalHeadAlignment.LEFT,
+                IdentificationPlatePosition.NORMAL,
+                SignalMount.POLE_INLINE,
+                SignalFinish.MODERN_GRAY,
+                AuxiliaryIndicator.NONE,
+                1
+        );
+
+        CFRSignalConfiguration restored = CFRSignalConfiguration.read(configuration.write());
+
+        assertEquals(SignalMount.POLE_INLINE, restored.mount());
+        assertEquals(true, restored.ladderEnabled());
+        assertEquals(true, restored.electricalBoxEnabled());
+        assertEquals(SignalHeadAlignment.CENTER, restored.headAlignment());
+    }
+
+    @Test
+    void shortLivedSideMountNameMigratesToInlineMount() {
+        CompoundTag tag = CFRSignalConfiguration.defaults().write();
+        tag.putString("Mount", "pole_side");
+
+        assertEquals(SignalMount.POLE_INLINE, CFRSignalConfiguration.read(tag).mount());
+    }
+
+    @Test
     void preVariationConfigurationUsesOriginalVisualDefaults() {
         CompoundTag tag = CFRSignalConfiguration.defaults().write();
         tag.putInt("Version", 5);

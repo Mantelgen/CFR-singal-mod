@@ -11,7 +11,7 @@ final class SignalOptionCompatibilityTest {
     @Test
     void mechanicalSignalsSupportClassicMastAndBridge() {
         assertEquals(
-                java.util.List.of(SignalMount.MAST, SignalMount.CANTILEVER),
+                java.util.List.of(SignalMount.MAST, SignalMount.POLE_INLINE, SignalMount.CANTILEVER),
                 SignalOptionCompatibility.allowedMounts(SignalFamily.MECHANICAL_SEMAPHORE)
         );
         assertEquals(
@@ -35,9 +35,34 @@ final class SignalOptionCompatibilityTest {
                 SignalOptionCompatibility.allowedMounts(SignalFamily.LEGACY_DWARF_ENTRY)
         );
         assertEquals(
-                java.util.List.of(SignalMount.MAST, SignalMount.CANTILEVER, SignalMount.WALL),
+                java.util.List.of(
+                        SignalMount.MAST,
+                        SignalMount.POLE_INLINE,
+                        SignalMount.CANTILEVER,
+                        SignalMount.WALL
+                ),
                 SignalOptionCompatibility.allowedMounts(SignalFamily.SHUNTING)
         );
+    }
+
+    @Test
+    void continuousPoleInlineMountSupportsElevatedFamiliesWithoutAlignmentOffset() {
+        assertTrue(SignalOptionCompatibility.allowedMounts(SignalFamily.TWO_LIGHT)
+                .contains(SignalMount.POLE_INLINE));
+        assertTrue(SignalOptionCompatibility.allowedMounts(SignalFamily.MECHANICAL_SEMAPHORE)
+                .contains(SignalMount.POLE_INLINE));
+        assertTrue(SignalOptionCompatibility.supportsLadder(
+                SignalFamily.TWO_LIGHT,
+                SignalMount.POLE_INLINE
+        ));
+        assertTrue(SignalOptionCompatibility.supportsElectricalBox(
+                SignalFamily.TWO_LIGHT,
+                SignalMount.POLE_INLINE
+        ));
+        assertFalse(SignalOptionCompatibility.supportsHeadAlignment(
+                SignalFamily.TWO_LIGHT,
+                SignalMount.POLE_INLINE
+        ));
     }
 
     @Test

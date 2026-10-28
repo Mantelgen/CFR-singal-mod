@@ -1,8 +1,10 @@
 package ro.cfrsignals.registry;
 
+import com.simibubi.create.AllItems;
 import com.simibubi.create.content.trains.track.TrackTargetingBlockItem;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -51,5 +53,13 @@ public final class CFRItems {
 
     public static void register(IEventBus modEventBus) {
         ITEMS.register(modEventBus);
+    }
+
+    /**
+     * CFR signal configuration deliberately uses Create's native wrench. The legacy
+     * CFR wrench stays registered only so old worlds do not lose existing item stacks.
+     */
+    public static boolean isSignalConfigurationTool(ItemStack stack) {
+        return AllItems.WRENCH.isIn(stack);
     }
 }

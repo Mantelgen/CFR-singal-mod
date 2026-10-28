@@ -22,7 +22,6 @@ public final class CFRCreativeTabs {
                         output.accept(CFRItems.SIGNAL_POLE.get());
                         output.accept(CFRItems.SIGNAL_BRIDGE_BEAM.get());
                         output.accept(CFRItems.SIGNAL_CONTROLLER.get());
-                        output.accept(CFRItems.SIGNAL_WRENCH.get());
                     })
                     .build()
     );

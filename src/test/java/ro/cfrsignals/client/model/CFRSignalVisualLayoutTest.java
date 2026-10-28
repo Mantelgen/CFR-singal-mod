@@ -22,6 +22,15 @@ final class CFRSignalVisualLayoutTest {
     }
 
     @Test
+    void inlineMechanicalSemaphoreProjectsInFrontOfContinuousPole() {
+        assertEquals(-6.0D / 16.0D, CFRSignalVisualLayout.mechanicalInlineForwardOffsetZ());
+        assertTrue(
+                CFRSignalVisualLayout.mechanicalInlineForwardOffsetZ()
+                        < CFRSignalVisualLayout.headForwardOffsetZ()
+        );
+    }
+
+    @Test
     void identificationTextShrinksOnlyWhenNeeded() {
         assertEquals(1.6F, CFRSignalVisualLayout.identificationPlateScale());
         assertEquals(1.2F, CFRSignalVisualLayout.bridgeIdentificationPlateScale());
@@ -89,6 +98,13 @@ final class CFRSignalVisualLayoutTest {
                 SignalMount.CANTILEVER,
                 IdentificationPlatePosition.LOW
         ) < bridgeNormal);
+        assertEquals(
+                bridgeNormal,
+                CFRSignalVisualLayout.identificationPlateOffsetFromHead(
+                        SignalMount.POLE_INLINE,
+                        IdentificationPlatePosition.NORMAL
+                )
+        );
     }
 
     @Test

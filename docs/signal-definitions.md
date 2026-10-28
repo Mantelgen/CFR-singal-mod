@@ -24,8 +24,9 @@ signals or crash a server reload.
 Legacy mounting and finish fields remain readable for save compatibility.
 Every family supports the physical base/pole/head mast assembly. Luminous
 families can hang below a physical signal bridge, while mechanical semaphores
-stand above its beam; compatible
-electric families additionally support a head fixed directly to a solid wall. Each head
+stand above its beam. Compatible families may also replace an intermediate pole
+segment so that the mast continues inline above the head; compatible electric
+families additionally support a head fixed directly to a solid wall. Each head
 represents one independently linked signal.
 Auxiliary display panels can show speed, next-speed, direction,
 track, short-distance, and left-track indications. This composition means any
