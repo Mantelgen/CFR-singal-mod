@@ -1,0 +1,9 @@
+{
+  "textures": { "particle": "#lens" },
+  "elements": [
+    { "from": [6.5, 6.5, 5.7], "to": [9.5, 9.5, 6.5], "shade": false, "faces": {
+      "down": { "texture": "#lens" }, "up": { "texture": "#lens" }, "north": { "texture": "#lens" },
+      "south": { "texture": "#lens" }, "west": { "texture": "#lens" }, "east": { "texture": "#lens" }
+    }}
+  ]
+}

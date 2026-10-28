@@ -1,0 +1,11 @@
+{
+  "id": "cfrsignals:repeater_classic",
+  "family": "repeater",
+  "head": "cfrsignals:block/head/repeater_panel",
+  "mast": "cfrsignals:block/mast/concrete_red_segment",
+  "lights": ["red", "yellow", "green"],
+  "attachments": ["ladder", "identification_plate", "electrical_box"],
+  "default_mast_height": 6,
+  "default_alignment": "center",
+  "translation_key": "definition.cfrsignals.repeater_classic"
+}

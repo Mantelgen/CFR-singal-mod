@@ -1,0 +1,4 @@
+{
+  "parent": "cfrsignals:block/head/three_light_lamp_yellow",
+  "textures": { "lens": "minecraft:block/brown_stained_glass" }
+}

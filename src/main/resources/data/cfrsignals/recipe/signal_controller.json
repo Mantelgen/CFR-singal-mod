@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "E": {
+      "item": "create:electron_tube"
+    },
+    "G": {
+      "item": "minecraft:glass_pane"
+    },
+    "I": { "tag": "c:plates/iron" },
+    "R": {
+      "item": "minecraft:redstone_torch"
+    }
+  },
+  "pattern": [
+    "IRI",
+    "GEG",
+    "III"
+  ],
+  "result": {
+    "count": 1,
+    "id": "cfrsignals:signal_controller"
+  }
+}

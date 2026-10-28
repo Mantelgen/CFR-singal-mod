@@ -1,0 +1,16 @@
+{
+  "ambientocclusion": true,
+  "textures": { "particle": "cfrsignals:block/signal/modern_gray", "metal": "cfrsignals:block/signal/modern_gray" },
+  "elements": [
+    { "from": [0, 11, 6.5], "to": [16, 14, 9.5], "faces": {
+      "down": { "texture": "#metal" }, "up": { "texture": "#metal" },
+      "north": { "texture": "#metal" }, "south": { "texture": "#metal" },
+      "west": { "texture": "#metal" }, "east": { "texture": "#metal" }
+    }},
+    { "from": [0, 8.5, 7.25], "to": [16, 10, 8.75], "faces": {
+      "down": { "texture": "#metal" }, "up": { "texture": "#metal" },
+      "north": { "texture": "#metal" }, "south": { "texture": "#metal" },
+      "west": { "texture": "#metal" }, "east": { "texture": "#metal" }
+    }}
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "id": "cfrsignals:mechanical_semaphore_classic",
+  "family": "mechanical_semaphore",
+  "head": "cfrsignals:block/mechanical/semaphore_mechanism_housing",
+  "mast": "cfrsignals:block/mast/concrete_red_segment",
+  "lights": [
+    "red",
+    "green"
+  ],
+  "attachments": [
+    "ladder",
+    "identification_plate"
+  ],
+  "default_mast_height": 7,
+  "default_alignment": "right",
+  "translation_key": "definition.cfrsignals.mechanical_semaphore_classic"
+}

@@ -1,0 +1,24 @@
+{
+  "ambientocclusion": true,
+  "textures": {
+    "particle": "cfrsignals:block/mechanical/red_paint",
+    "red": "cfrsignals:block/mechanical/red_paint",
+    "white": "cfrsignals:block/mechanical/white_paint"
+  },
+  "elements": [
+    {
+      "from": [21.25, 10.75, 7], "to": [29.25, 13.25, 9],
+      "faces": { "down": { "texture": "#red" }, "up": { "texture": "#red" }, "north": { "texture": "#red" }, "south": { "texture": "#red" }, "west": { "texture": "#red" }, "east": { "texture": "#red" } }
+    },
+    {
+      "from": [21, 11.55, 6.85], "to": [29, 12.45, 7],
+      "shade": false,
+      "faces": { "north": { "texture": "#white" }, "south": { "texture": "#white" }, "west": { "texture": "#white" }, "east": { "texture": "#white" }, "down": { "texture": "#white" }, "up": { "texture": "#white" } }
+    },
+    {
+      "from": [21, 11.55, 9], "to": [29, 12.45, 9.15],
+      "shade": false,
+      "faces": { "north": { "texture": "#white" }, "south": { "texture": "#white" }, "west": { "texture": "#white" }, "east": { "texture": "#white" }, "down": { "texture": "#white" }, "up": { "texture": "#white" } }
+    }
+  ]
+}

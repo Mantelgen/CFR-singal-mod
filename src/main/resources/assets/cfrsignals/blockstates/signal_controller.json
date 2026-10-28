@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "cfrsignals:block/signal_controller",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "cfrsignals:block/signal_controller"
+    },
+    "facing=south": {
+      "model": "cfrsignals:block/signal_controller",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "cfrsignals:block/signal_controller",
+      "y": 270
+    }
+  }
+}

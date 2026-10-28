@@ -1,0 +1,7 @@
+{
+  "parent": "cfrsignals:block/mast/segment",
+  "textures": {
+    "particle": "cfrsignals:block/mechanical/red_paint",
+    "mast": "cfrsignals:block/mechanical/red_paint"
+  }
+}

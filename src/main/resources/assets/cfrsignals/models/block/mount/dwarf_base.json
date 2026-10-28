@@ -1,0 +1,20 @@
+{
+  "ambientocclusion": true,
+  "textures": {
+    "particle": "cfrsignals:block/mast/concrete",
+    "concrete": "cfrsignals:block/mast/concrete",
+    "metal": "cfrsignals:block/signal/bracket"
+  },
+  "elements": [
+    { "from": [3, 0, 3], "to": [13, 3, 13], "faces": {
+      "down": { "texture": "#concrete" }, "up": { "texture": "#concrete" },
+      "north": { "texture": "#concrete" }, "south": { "texture": "#concrete" },
+      "west": { "texture": "#concrete" }, "east": { "texture": "#concrete" }
+    }},
+    { "from": [5, 3, 5], "to": [11, 5, 11], "faces": {
+      "down": { "texture": "#metal" }, "up": { "texture": "#metal" },
+      "north": { "texture": "#metal" }, "south": { "texture": "#metal" },
+      "west": { "texture": "#metal" }, "east": { "texture": "#metal" }
+    }}
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "id": "cfrsignals:legacy_dwarf_entry",
+  "family": "legacy_dwarf_entry",
+  "head": "cfrsignals:block/head/shunting_backplate",
+  "mast": "cfrsignals:block/mast/concrete_red_segment",
+  "lights": ["red", "green"],
+  "attachments": ["identification_plate"],
+  "default_mast_height": 2,
+  "default_alignment": "center",
+  "translation_key": "definition.cfrsignals.legacy_dwarf_entry"
+}

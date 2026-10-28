@@ -1,0 +1,11 @@
+{
+  "id": "cfrsignals:shunting_classic",
+  "family": "shunting",
+  "head": "cfrsignals:block/head/shunting_backplate",
+  "mast": "cfrsignals:block/mast/concrete_red_segment",
+  "lights": ["red", "green"],
+  "attachments": ["ladder", "identification_plate", "electrical_box"],
+  "default_mast_height": 5,
+  "default_alignment": "center",
+  "translation_key": "definition.cfrsignals.shunting_classic"
+}

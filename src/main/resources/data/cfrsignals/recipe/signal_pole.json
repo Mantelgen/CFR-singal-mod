@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "B": { "item": "minecraft:iron_bars" },
+    "C": { "item": "minecraft:white_concrete" },
+    "R": { "item": "minecraft:red_dye" }
+  },
+  "pattern": [
+    "BCR",
+    "BCR",
+    "BCR"
+  ],
+  "result": { "count": 3, "id": "cfrsignals:signal_pole" }
+}

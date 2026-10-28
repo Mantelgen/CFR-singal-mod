@@ -1,0 +1,46 @@
+{
+  "ambientocclusion": true,
+  "textures": {
+    "particle": "cfrsignals:block/attachments/electrical_box",
+    "box": "cfrsignals:block/attachments/electrical_box",
+    "hardware": "cfrsignals:block/signal/bracket"
+  },
+  "elements": [
+    {
+      "from": [9.5, 0.75, 7.4], "to": [13, 7.75, 10.9],
+      "faces": { "down": { "texture": "#box" }, "up": { "texture": "#box" }, "north": { "texture": "#box" }, "south": { "texture": "#box" }, "west": { "texture": "#box" }, "east": { "texture": "#box" } }
+    },
+    {
+      "from": [9.75, 1.15, 7.1], "to": [12.75, 7.35, 7.4],
+      "faces": { "north": { "texture": "#box" }, "south": { "texture": "#box" }, "west": { "texture": "#box" }, "east": { "texture": "#box" } }
+    },
+    {
+      "from": [10, 6.85, 6.85], "to": [12.5, 7.25, 7.1],
+      "faces": { "north": { "texture": "#hardware" }, "south": { "texture": "#hardware" }, "down": { "texture": "#hardware" } }
+    },
+    {
+      "from": [10, 3.65, 6.7], "to": [10.4, 4.95, 7.1],
+      "faces": { "north": { "texture": "#hardware" }, "south": { "texture": "#hardware" }, "west": { "texture": "#hardware" }, "east": { "texture": "#hardware" } }
+    },
+    {
+      "from": [12.75, 1.8, 6.85], "to": [13.1, 2.7, 7.4],
+      "faces": { "north": { "texture": "#hardware" }, "south": { "texture": "#hardware" }, "east": { "texture": "#hardware" } }
+    },
+    {
+      "from": [12.75, 5.8, 6.85], "to": [13.1, 6.7, 7.4],
+      "faces": { "north": { "texture": "#hardware" }, "south": { "texture": "#hardware" }, "east": { "texture": "#hardware" } }
+    },
+    {
+      "from": [8.9, 1.4, 8.25], "to": [9.5, 7.1, 9.25],
+      "faces": { "down": { "texture": "#hardware" }, "up": { "texture": "#hardware" }, "north": { "texture": "#hardware" }, "south": { "texture": "#hardware" }, "west": { "texture": "#hardware" }, "east": { "texture": "#hardware" } }
+    },
+    {
+      "from": [6.4, 1.8, 6.65], "to": [9.5, 2.45, 9.5],
+      "faces": { "down": { "texture": "#hardware" }, "up": { "texture": "#hardware" }, "north": { "texture": "#hardware" }, "south": { "texture": "#hardware" }, "west": { "texture": "#hardware" }, "east": { "texture": "#hardware" } }
+    },
+    {
+      "from": [6.4, 5.8, 6.65], "to": [9.5, 6.45, 9.5],
+      "faces": { "down": { "texture": "#hardware" }, "up": { "texture": "#hardware" }, "north": { "texture": "#hardware" }, "south": { "texture": "#hardware" }, "west": { "texture": "#hardware" }, "east": { "texture": "#hardware" } }
+    }
+  ]
+}

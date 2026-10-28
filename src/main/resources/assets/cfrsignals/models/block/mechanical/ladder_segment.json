@@ -1,0 +1,8 @@
+{
+  "parent": "cfrsignals:block/attachments/ladder_segment",
+  "textures": {
+    "particle": "cfrsignals:block/mechanical/dark_metal",
+    "ladder": "cfrsignals:block/mechanical/dark_metal",
+    "mount": "cfrsignals:block/mechanical/blackened_housing"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "tools",
+  "key": {
+    "A": {
+      "item": "create:andesite_alloy"
+    },
+    "I": {
+      "tag": "c:plates/iron"
+    },
+    "S": {
+      "tag": "c:rods/wooden"
+    }
+  },
+  "pattern": [
+    " II",
+    " AI",
+    "S  "
+  ],
+  "result": {
+    "count": 1,
+    "id": "cfrsignals:signal_wrench"
+  }
+}

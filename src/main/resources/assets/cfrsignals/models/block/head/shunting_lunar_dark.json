@@ -1,0 +1,7 @@
+{
+  "parent": "cfrsignals:block/head/lamp_green",
+  "textures": {
+    "particle": "cfrsignals:block/signal/lamp_aux_dark",
+    "lens": "cfrsignals:block/signal/lamp_aux_dark"
+  }
+}

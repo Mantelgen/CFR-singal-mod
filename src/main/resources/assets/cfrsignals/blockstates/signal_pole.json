@@ -1,0 +1,28 @@
+{
+  "multipart": [
+    {
+      "when": { "white": "false" },
+      "apply": { "model": "cfrsignals:block/mast/concrete_red_segment" }
+    },
+    {
+      "when": { "white": "true" },
+      "apply": { "model": "cfrsignals:block/mast/concrete_white_segment" }
+    },
+    {
+      "when": { "facing": "north" },
+      "apply": { "model": "cfrsignals:block/attachments/ladder_segment" }
+    },
+    {
+      "when": { "facing": "east" },
+      "apply": { "model": "cfrsignals:block/attachments/ladder_segment", "y": 90 }
+    },
+    {
+      "when": { "facing": "south" },
+      "apply": { "model": "cfrsignals:block/attachments/ladder_segment", "y": 180 }
+    },
+    {
+      "when": { "facing": "west" },
+      "apply": { "model": "cfrsignals:block/attachments/ladder_segment", "y": 270 }
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "parent": "cfrsignals:block/head/repeater_bar_stop",
+  "textures": {
+    "particle": "cfrsignals:block/signal/lamp_lunar_lit",
+    "light": "cfrsignals:block/signal/lamp_lunar_lit"
+  },
+  "elements": [
+    { "from": [7.25, 3, 5.8], "to": [8.75, 12, 6.4], "shade": false, "faces": {
+      "down": { "texture": "#light" }, "up": { "texture": "#light" }, "north": { "texture": "#light" },
+      "south": { "texture": "#light" }, "west": { "texture": "#light" }, "east": { "texture": "#light" }
+    }},
+    { "from": [8, 8.75, 5.8], "to": [12.5, 10.25, 6.4], "rotation": { "origin": [8, 9.5, 8], "axis": "z", "angle": -45 }, "shade": false, "faces": {
+      "down": { "texture": "#light" }, "up": { "texture": "#light" }, "north": { "texture": "#light" },
+      "south": { "texture": "#light" }, "west": { "texture": "#light" }, "east": { "texture": "#light" }
+    }}
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "ambientocclusion": true,
+  "textures": { "particle": "cfrsignals:block/signal/backplate", "housing": "cfrsignals:block/signal/backplate" },
+  "elements": [
+    { "from": [3.5, 3.5, 7], "to": [12.5, 12.5, 9.5], "rotation": { "origin": [8, 8, 8], "axis": "z", "angle": 45 }, "faces": {
+      "down": { "texture": "#housing" }, "up": { "texture": "#housing" }, "north": { "texture": "#housing" },
+      "south": { "texture": "#housing" }, "west": { "texture": "#housing" }, "east": { "texture": "#housing" }
+    }}
+  ]
+}

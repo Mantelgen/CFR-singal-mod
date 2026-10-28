@@ -1,0 +1,11 @@
+{
+  "id": "cfrsignals:emergency_diamond",
+  "family": "emergency",
+  "head": "cfrsignals:block/head/emergency_diamond",
+  "mast": "cfrsignals:block/mast/concrete_red_segment",
+  "lights": ["red", "green"],
+  "attachments": [],
+  "default_mast_height": 5,
+  "default_alignment": "center",
+  "translation_key": "definition.cfrsignals.emergency_diamond"
+}

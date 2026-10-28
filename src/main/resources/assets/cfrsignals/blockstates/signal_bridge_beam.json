@@ -1,0 +1,24 @@
+{
+  "multipart": [
+    {
+      "when": { "facing": "north" },
+      "apply": { "model": "cfrsignals:block/mount/overhead_beam_segment" }
+    },
+    {
+      "when": { "facing": "south" },
+      "apply": { "model": "cfrsignals:block/mount/overhead_beam_segment", "y": 180 }
+    },
+    {
+      "when": { "facing": "east" },
+      "apply": { "model": "cfrsignals:block/mount/overhead_beam_segment", "y": 90 }
+    },
+    {
+      "when": { "facing": "west" },
+      "apply": { "model": "cfrsignals:block/mount/overhead_beam_segment", "y": 270 }
+    },
+    {
+      "when": { "post": "true" },
+      "apply": { "model": "cfrsignals:block/mount/bridge_post_connector" }
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "ambientocclusion": true,
+  "textures": {
+    "particle": "cfrsignals:block/attachments/ladder",
+    "ladder": "cfrsignals:block/attachments/ladder",
+    "mount": "cfrsignals:block/signal/bracket"
+  },
+  "elements": [
+    {
+      "from": [5.75, 0, 9.85], "to": [6.2, 16, 10.3],
+      "faces": { "down": { "texture": "#ladder" }, "up": { "texture": "#ladder" }, "north": { "texture": "#ladder" }, "south": { "texture": "#ladder" }, "west": { "texture": "#ladder" }, "east": { "texture": "#ladder" } }
+    },
+    {
+      "from": [9.8, 0, 9.85], "to": [10.25, 16, 10.3],
+      "faces": { "down": { "texture": "#ladder" }, "up": { "texture": "#ladder" }, "north": { "texture": "#ladder" }, "south": { "texture": "#ladder" }, "west": { "texture": "#ladder" }, "east": { "texture": "#ladder" } }
+    },
+    {
+      "from": [6.2, 1.8, 9.85], "to": [9.8, 2.2, 10.3],
+      "faces": { "down": { "texture": "#ladder" }, "up": { "texture": "#ladder" }, "north": { "texture": "#ladder" }, "south": { "texture": "#ladder" }, "west": { "texture": "#ladder" }, "east": { "texture": "#ladder" } }
+    },
+    {
+      "from": [6.2, 5.8, 9.85], "to": [9.8, 6.2, 10.3],
+      "faces": { "down": { "texture": "#ladder" }, "up": { "texture": "#ladder" }, "north": { "texture": "#ladder" }, "south": { "texture": "#ladder" }, "west": { "texture": "#ladder" }, "east": { "texture": "#ladder" } }
+    },
+    {
+      "from": [6.2, 9.8, 9.85], "to": [9.8, 10.2, 10.3],
+      "faces": { "down": { "texture": "#ladder" }, "up": { "texture": "#ladder" }, "north": { "texture": "#ladder" }, "south": { "texture": "#ladder" }, "west": { "texture": "#ladder" }, "east": { "texture": "#ladder" } }
+    },
+    {
+      "from": [6.2, 13.8, 9.85], "to": [9.8, 14.2, 10.3],
+      "faces": { "down": { "texture": "#ladder" }, "up": { "texture": "#ladder" }, "north": { "texture": "#ladder" }, "south": { "texture": "#ladder" }, "west": { "texture": "#ladder" }, "east": { "texture": "#ladder" } }
+    },
+    {
+      "from": [5.9, 1.55, 9.1], "to": [10.1, 2.45, 9.85],
+      "faces": { "down": { "texture": "#mount" }, "up": { "texture": "#mount" }, "north": { "texture": "#mount" }, "south": { "texture": "#mount" }, "west": { "texture": "#mount" }, "east": { "texture": "#mount" } }
+    },
+    {
+      "from": [5.9, 13.55, 9.1], "to": [10.1, 14.45, 9.85],
+      "faces": { "down": { "texture": "#mount" }, "up": { "texture": "#mount" }, "north": { "texture": "#mount" }, "south": { "texture": "#mount" }, "west": { "texture": "#mount" }, "east": { "texture": "#mount" } }
+    }
+  ]
+}

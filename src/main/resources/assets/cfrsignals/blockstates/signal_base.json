@@ -1,0 +1,42 @@
+{
+  "multipart": [
+    {
+      "apply": { "model": "cfrsignals:block/mast/concrete_base" }
+    },
+    {
+      "apply": { "model": "cfrsignals:block/mast/concrete_red_segment" }
+    },
+    {
+      "when": { "facing": "north" },
+      "apply": { "model": "cfrsignals:block/attachments/electrical_box" }
+    },
+    {
+      "when": { "facing": "east" },
+      "apply": { "model": "cfrsignals:block/attachments/electrical_box", "y": 90 }
+    },
+    {
+      "when": { "facing": "south" },
+      "apply": { "model": "cfrsignals:block/attachments/electrical_box", "y": 180 }
+    },
+    {
+      "when": { "facing": "west" },
+      "apply": { "model": "cfrsignals:block/attachments/electrical_box", "y": 270 }
+    },
+    {
+      "when": { "facing": "north" },
+      "apply": { "model": "cfrsignals:block/attachments/ladder_segment" }
+    },
+    {
+      "when": { "facing": "east" },
+      "apply": { "model": "cfrsignals:block/attachments/ladder_segment", "y": 90 }
+    },
+    {
+      "when": { "facing": "south" },
+      "apply": { "model": "cfrsignals:block/attachments/ladder_segment", "y": 180 }
+    },
+    {
+      "when": { "facing": "west" },
+      "apply": { "model": "cfrsignals:block/attachments/ladder_segment", "y": 270 }
+    }
+  ]
+}

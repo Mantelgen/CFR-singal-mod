@@ -1,0 +1,33 @@
+{
+  "ambientocclusion": true,
+  "textures": {
+    "particle": "cfrsignals:block/signal/modern_gray",
+    "metal": "cfrsignals:block/signal/modern_gray"
+  },
+  "elements": [
+    {
+      "from": [7, -2, 7],
+      "to": [9, 8.5, 9],
+      "faces": {
+        "down": { "uv": [0, 0, 16, 16], "texture": "#metal" },
+        "up": { "uv": [0, 0, 16, 16], "texture": "#metal" },
+        "north": { "uv": [0, 0, 16, 16], "texture": "#metal" },
+        "south": { "uv": [0, 0, 16, 16], "texture": "#metal" },
+        "west": { "uv": [0, 0, 16, 16], "texture": "#metal" },
+        "east": { "uv": [0, 0, 16, 16], "texture": "#metal" }
+      }
+    },
+    {
+      "from": [5.5, 6.5, 6.5],
+      "to": [10.5, 9, 9.5],
+      "faces": {
+        "down": { "texture": "#metal" },
+        "up": { "texture": "#metal" },
+        "north": { "texture": "#metal" },
+        "south": { "texture": "#metal" },
+        "west": { "texture": "#metal" },
+        "east": { "texture": "#metal" }
+      }
+    }
+  ]
+}

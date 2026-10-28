@@ -1,0 +1,35 @@
+{
+  "ambientocclusion": true,
+  "textures": {
+    "particle": "cfrsignals:block/attachments/identification_plate_side",
+    "side": "cfrsignals:block/attachments/identification_plate_side",
+    "face": "cfrsignals:block/attachments/identification_plate_face",
+    "mount": "cfrsignals:block/signal/bracket"
+  },
+  "elements": [
+    {
+      "from": [4.75, 0.25, 5.75], "to": [11.25, 3, 6.5],
+      "faces": {
+        "down": { "texture": "#side" }, "up": { "texture": "#side" },
+        "north": { "texture": "#side" }, "south": { "texture": "#side" },
+        "west": { "texture": "#side" }, "east": { "texture": "#side" }
+      }
+    },
+    {
+      "from": [5, 0.5, 5.62], "to": [11, 2.75, 5.75],
+      "faces": {
+        "north": { "texture": "#face" }, "south": { "texture": "#face" },
+        "down": { "texture": "#side" }, "up": { "texture": "#side" },
+        "west": { "texture": "#side" }, "east": { "texture": "#side" }
+      }
+    },
+    {
+      "from": [7.5, 3, 6], "to": [8.5, 7, 8.75],
+      "faces": { "down": { "texture": "#mount" }, "up": { "texture": "#mount" }, "north": { "texture": "#mount" }, "south": { "texture": "#mount" }, "west": { "texture": "#mount" }, "east": { "texture": "#mount" } }
+    },
+    {
+      "from": [6.5, 5.75, 8.25], "to": [9.5, 7, 9.25],
+      "faces": { "down": { "texture": "#mount" }, "up": { "texture": "#mount" }, "north": { "texture": "#mount" }, "south": { "texture": "#mount" }, "west": { "texture": "#mount" }, "east": { "texture": "#mount" } }
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+{
+  "parent": "cfrsignals:block/head/lamp_red",
+  "textures": { "lens": "cfrsignals:block/signal/lamp_red_dark" }
+}

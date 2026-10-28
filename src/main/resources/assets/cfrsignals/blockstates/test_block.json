@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "cfrsignals:block/test_block"
+    }
+  }
+}

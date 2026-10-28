@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "I": { "tag": "c:ingots/iron" },
+    "B": { "item": "minecraft:iron_bars" }
+  },
+  "pattern": [
+    "III",
+    "BBB",
+    "III"
+  ],
+  "result": { "count": 6, "id": "cfrsignals:signal_bridge_beam" }
+}

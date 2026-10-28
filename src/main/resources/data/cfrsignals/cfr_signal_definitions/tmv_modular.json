@@ -1,0 +1,11 @@
+{
+  "id": "cfrsignals:tmv_modular",
+  "family": "tmv",
+  "head": "cfrsignals:block/head/three_light_backplate",
+  "mast": "cfrsignals:block/mast/concrete_red_segment",
+  "lights": ["red", "yellow", "green"],
+  "attachments": ["ladder", "identification_plate", "electrical_box"],
+  "default_mast_height": 7,
+  "default_alignment": "center",
+  "translation_key": "definition.cfrsignals.tmv_modular"
+}

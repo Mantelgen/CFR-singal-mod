@@ -1,0 +1,25 @@
+{
+  "ambientocclusion": true,
+  "textures": {
+    "particle": "cfrsignals:block/mechanical/dark_metal",
+    "metal": "cfrsignals:block/mechanical/dark_metal"
+  },
+  "elements": [
+    {
+      "from": [6.5, 10.5, 6.75], "to": [9.5, 13.5, 9.25],
+      "faces": {
+        "down": { "texture": "#metal" }, "up": { "texture": "#metal" },
+        "north": { "texture": "#metal" }, "south": { "texture": "#metal" },
+        "west": { "texture": "#metal" }, "east": { "texture": "#metal" }
+      }
+    },
+    {
+      "from": [7, 11, 6.5], "to": [9, 13, 6.75],
+      "faces": {
+        "down": { "texture": "#metal" }, "up": { "texture": "#metal" },
+        "north": { "texture": "#metal" }, "south": { "texture": "#metal" },
+        "west": { "texture": "#metal" }, "east": { "texture": "#metal" }
+      }
+    }
+  ]
+}

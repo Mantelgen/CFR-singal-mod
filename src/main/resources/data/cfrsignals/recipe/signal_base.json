@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "C": { "item": "minecraft:smooth_stone" },
+    "I": { "tag": "c:ingots/iron" },
+    "R": { "item": "minecraft:redstone" }
+  },
+  "pattern": [
+    " I ",
+    "IRI",
+    "CCC"
+  ],
+  "result": { "count": 1, "id": "cfrsignals:signal_base" }
+}
